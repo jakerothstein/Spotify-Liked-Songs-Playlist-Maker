@@ -7,3 +7,7 @@
     > You need to get this data from Spotify by creating a Spotify [app](https://developer.spotify.com/dashboard). Make sure to set REDIRECT_URI = "http://localhost:8888/callback" for testing
 - Once the file is run you will log into Spotify on your browser and your Oauth will be logged
     > Once you log in, after a second a new playlist will be created titled "Liked Songs" 
+
+# Why I Created This
+
+- I go to the gym and run while listening to music on my apple watch and you can't download liked songs so I made this tool
