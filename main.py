@@ -22,7 +22,6 @@ sp = spotipy.Spotify(auth=token)
 
 out = sp.user_playlist_create(user=USERNAME, name=PLAYLIST_NAME, public=False)
 playlist_id = out["id"]
-playlists = sp.user_playlists(user=USERNAME)["items"]
 
 song_list = []
 tracks = sp.current_user_saved_tracks(limit=50, offset=0)
