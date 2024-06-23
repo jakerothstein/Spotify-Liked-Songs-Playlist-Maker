@@ -6,6 +6,7 @@ CLIENT_ID = ""
 CLIENT_SECRET = ""
 REDIRECT_URI = "http://localhost:8888/callback"  # Set this to "http://localhost:8888/callback" to run it locally
 USERNAME = ""  # Put the username of the account registered with the API token
+PLAYLIST_NAME = "Liked Songs Export"
 
 scope = 'playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-top-read'
 
@@ -19,8 +20,11 @@ token = util.prompt_for_user_token(
 
 sp = spotipy.Spotify(auth=token)
 
-sp.user_playlist_create(user=USERNAME, name="Liked Songs", public=False)
-playlist_id = sp.user_playlists(user=USERNAME)["items"][0]["id"]
+sp.user_playlist_create(user=USERNAME, name=PLAYLIST_NAME, public=False)
+playlists = sp.user_playlists(user=USERNAME)["items"]
+for playlist in playlists:
+	if playlist["name"] == PLAYLIST_NAME:
+		playlist_id = playlist["id"]
 
 song_list = []
 tracks = sp.current_user_saved_tracks(limit=50, offset=0)
